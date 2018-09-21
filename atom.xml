@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Greatness</title>
+  
+  <subtitle>记录自己的学习过程</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-09-20T14:15:32.360Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Mr.W</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello world!</title>
+    <link href="http://yoursite.com/2018/09/20/Hello-world-0/"/>
+    <id>http://yoursite.com/2018/09/20/Hello-world-0/</id>
+    <published>2018-09-20T11:57:41.000Z</published>
+    <updated>2018-09-20T14:15:32.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just study hard and pursue what I really want.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Just study hard and pursue what I really want.&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
