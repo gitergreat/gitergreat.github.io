@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/09/22/Python%201/</loc>
+    <loc>http://yoursite.com/2018/09/22/python-2/</loc>
+    
+    <lastmod>2018-09-22T12:30:12.940Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/22/Python-1/</loc>
     
     <lastmod>2018-09-22T12:06:33.972Z</lastmod>
     
