@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-22T02:34:35.261Z</updated>
+  <updated>2018-09-22T09:49:16.217Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,29 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>测试</title>
-    <link href="http://yoursite.com/2018/09/22/%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2018/09/22/测试/</id>
-    <published>2018-09-22T02:32:59.000Z</published>
-    <updated>2018-09-22T02:34:35.261Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="博客写法" scheme="http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%B3%95/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Markdone使用语法</title>
     <link href="http://yoursite.com/2018/09/22/%E7%AC%AC1%E7%AF%87%E5%8D%9A%E6%96%87/"/>
     <id>http://yoursite.com/2018/09/22/第1篇博文/</id>
     <published>2018-09-22T02:01:56.000Z</published>
-    <updated>2018-09-22T02:26:36.071Z</updated>
+    <updated>2018-09-22T09:49:16.217Z</updated>
     
-    <content type="html"><![CDATA[<p>1.斜体和粗体</p><p><em>这是斜体</em>或<em>这也是斜体</em><br><strong>这是粗体</strong><br><strong><em>这是加粗斜体</em></strong><br><del>这是删除线</del></p><p>2.分级标题</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>3.超链接</p><p>行内格式：<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">我的博客</a><br>参考格式：[我的博客][1],百度[2]<br>[1]:<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">https://gitergreat.github.io/</a><br>[2]:<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a><br>自动链接：我的博客地址<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">https://gitergreat.github.io/</a></p><p>4.列表</p><p>无序列表：<br>写法：</p><ul><li>无序列表1</li></ul><ul><li>无序列表2</li></ul><ul><li>无序列表3</li></ul><p>有序列表：<br>写法：<br>1.有序列表1<br>2.有序列表2<br>3.有序列表3</p><p>5.插入图片</p><p><img src="/images/ki.jpg" alt=""></p><p>6.表格</p><table><thead><tr><th>表头1</th><th style="text-align:left">表头2</th><th style="text-align:center">表头3</th><th style="text-align:right">表头4</th></tr></thead><tbody><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<p>1.斜体和粗体</p><p><em>这是斜体</em>或<em>这也是斜体</em><br><strong>这是粗体</strong><br><strong><em>这是加粗斜体</em></strong><br><del>这是删除线</del></p><p>2.分级标题</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>3.超链接</p><p>行内格式：<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">我的博客</a><br>参考格式：[我的博客][1],百度[2]<br>[1]:<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">https://gitergreat.github.io/</a><br>[2]:<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a><br>自动链接：我的博客地址<a href="https://gitergreat.github.io/" target="_blank" rel="noopener">https://gitergreat.github.io/</a></p><p>4.列表</p><p>无序列表：<br>写法：</p><ul><li>无序列表1</li></ul><ul><li>无序列表2</li></ul><ul><li>无序列表3</li></ul><p>有序列表：<br>写法：<br>1.有序列表1<br>2.有序列表2<br>3.有序列表3</p><p>列表嵌套：<br>上一级和下一级之间敲三个空格即可</p><p>5.插入图片</p><p><img src="/images/ki.jpg" alt="Kyire Irving" title="Kyire Irving"></p><p>6.表格</p><table><thead><tr><th>表头1</th><th style="text-align:left">表头2</th><th style="text-align:center">表头3</th><th style="text-align:right">表头4</th></tr></thead><tbody><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr><tr><td>默认左对齐</td><td style="text-align:left">左对齐</td><td style="text-align:center">居中对齐</td><td style="text-align:right">右对齐</td></tr></tbody></table><p>7.分割线</p><hr><hr><hr><hr><p>8.引用</p><blockquote><p>这是引用内容</p><blockquote><p>这是引用内容</p><blockquote><p>这是引用内容</p></blockquote></blockquote></blockquote><p>9.代码</p><p><code>print(&quot;Hello world!&quot;)</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br></pre></td></tr></table></figure><p>10.流程图</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -52,34 +36,10 @@
     
     </summary>
     
+      <category term="Markdone语法" scheme="http://yoursite.com/categories/Markdone%E8%AF%AD%E6%B3%95/"/>
     
-      <category term="tag1" scheme="http://yoursite.com/tags/tag1/"/>
     
-      <category term="tag2" scheme="http://yoursite.com/tags/tag2/"/>
-    
-      <category term="tag3" scheme="http://yoursite.com/tags/tag3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello world!</title>
-    <link href="http://yoursite.com/2018/09/20/Hello-world-0/"/>
-    <id>http://yoursite.com/2018/09/20/Hello-world-0/</id>
-    <published>2018-09-20T11:57:41.000Z</published>
-    <updated>2018-09-20T14:15:32.360Z</updated>
-    
-    <content type="html"><![CDATA[<p>Just study hard and pursue what I really want.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Just study hard and pursue what I really want.&lt;/p&gt;
-
-      
-    
-    </summary>
-    
+      <category term="Markdone" scheme="http://yoursite.com/tags/Markdone/"/>
     
   </entry>
   

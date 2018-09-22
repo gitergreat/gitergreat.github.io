@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[测试]]></title>
-    <url>%2F2018%2F09%2F22%2F%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>博客写法</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[Markdone使用语法]]></title>
     <url>%2F2018%2F09%2F22%2F%E7%AC%AC1%E7%AF%87%E5%8D%9A%E6%96%87%2F</url>
-    <content type="text"><![CDATA[1.斜体和粗体 这是斜体或这也是斜体这是粗体这是加粗斜体这是删除线 2.分级标题 一级标题二级标题三级标题四级标题五级标题六级标题3.超链接 行内格式：我的博客参考格式：[我的博客][1],百度[2][1]:https://gitergreat.github.io/[2]:https://www.baidu.com/自动链接：我的博客地址https://gitergreat.github.io/ 4.列表 无序列表：写法： 无序列表1 无序列表2 无序列表3 有序列表：写法：1.有序列表12.有序列表23.有序列表3 5.插入图片 6.表格 表头1 表头2 表头3 表头4 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐]]></content>
+    <content type="text"><![CDATA[1.斜体和粗体 这是斜体或这也是斜体这是粗体这是加粗斜体这是删除线 2.分级标题 一级标题二级标题三级标题四级标题五级标题六级标题3.超链接 行内格式：我的博客参考格式：[我的博客][1],百度[2][1]:https://gitergreat.github.io/[2]:https://www.baidu.com/自动链接：我的博客地址https://gitergreat.github.io/ 4.列表 无序列表：写法： 无序列表1 无序列表2 无序列表3 有序列表：写法：1.有序列表12.有序列表23.有序列表3 列表嵌套：上一级和下一级之间敲三个空格即可 5.插入图片 6.表格 表头1 表头2 表头3 表头4 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 7.分割线 8.引用 这是引用内容 这是引用内容 这是引用内容 9.代码 print(&quot;Hello world!&quot;) 12include&lt;iostream&gt;using namespace std; 10.流程图 12345678st=&gt;start: 开始op=&gt;operation: My Operationcond=&gt;condition: Yes or No?e=&gt;endst-&gt;op-&gt;condcond(yes)-&gt;econd(no)-&gt;op&amp;]]></content>
+      <categories>
+        <category>Markdone语法</category>
+      </categories>
       <tags>
-        <tag>tag1</tag>
-        <tag>tag2</tag>
-        <tag>tag3</tag>
+        <tag>Markdone</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello world!]]></title>
-    <url>%2F2018%2F09%2F20%2FHello-world-0%2F</url>
-    <content type="text"><![CDATA[Just study hard and pursue what I really want.]]></content>
   </entry>
 </search>
