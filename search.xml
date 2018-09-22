@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python入门（一）]]></title>
+    <url>%2F2018%2F09%2F22%2FPython%201%2F</url>
+    <content type="text"><![CDATA[之前学习Python的笔记排版过于凌乱，现在 决定重新整理一下，以便日后的复习和使用。 首先从一段代码开始了解Python 12345678910#TempConvert.pyTempStr = input(&quot;请输入带有符号的温度值：&quot;)if TempStr[-1] in [&apos;F&apos;,&apos;f&apos;]: C = (eval(TempStr[0:-1]) - 32)/1.8 print(&quot;转化后的温度是&#123;:.2f&#125;C&quot;.format(C))elif TempStr[-1] in [&apos;C&apos;,&apos;c&apos;]: F = 1.8*eval(TempStr[0:-1]) + 32 print(&quot;转化后的温度是&#123;:.2f&#125;F&quot;.format(F))else: print(&quot;输入格式错误&quot;) 这段代码很简单，但是也包含了很多Python的语法元素，下面来具体分析： 注释Python的注释有两种方法： 1.# 一个井号，一般用于单行注释 2.&apos;&apos;&apos; &apos;&apos;&apos;或者&quot;&quot;&quot; &quot;&quot;&quot; 一对单引号或双引号，一般用于多行注释 缩进缩进是Python的强制语法要求，表达语句间的关系 变量变量采用标识名来表示 变量命名字符： 大小写字母、数字、下划线和汉字及组合 注意：大小写敏感、首字符不能是数字、不能与保留字相同 其中Python的保留字如下：（33个） 数据类型字符串定义：由一对单引号或双引号标识的字符的有序序列 字符串的索引方式： 正向递增序号 0 1 2 3 4 5 反向递增序号 -6 -5 -4 -3 -2 -1 索引——返回某一个单个字符 &lt; &gt;[M] 切片——返回字符串的某一段字符 &lt; &gt;[M：N] 如温度转换实例中的TempStr[0:-1]表示的是从0开始读到最后一个字符串的字符 相当于去掉最后一个字符 数字类型整数 浮点数 列表类型列表用[]表示，采用(,)分隔各元素 [&apos;F&apos;,&apos;f&apos;]表示两个元素’F&apos;或‘f’ 使用保留字in判断一个元素是否在列表中 语句赋值语句：由赋值符号构成的一行代码 分支语句：由判断条件决定程序运行方向的语句 函数根据输入参数产生不同输出的过程 程序的输入输出input()——从控制台获得用户输入的函数 括号中是提示信息字符串 print——以字符型式像控制台输出结果的函数 print函数的格式化{}表示槽 后续变量填充到槽中 eval函数（评估函数） 去掉参数最外侧引号并执行余下语句 能将字符串语句的信息变成语句 Python的特性计算机功能性 可编程性 摩尔定律集成电路单位面积晶体管数约两年增长一倍 预测很准确 编译和解释源代码-&gt;目标代码 编译：将原代码一次性转化为目标代码 解释：逐条,类似于实时 静态语言：编译 脚本语言：解释 程序的基本编写方法IPO 输入 处理 输出 输入是程序的开始 输出是程序的结束 处理方法——算法 编程解决问题的步骤分析问题 划分边界 设计算法 编写程序 测试程序 维护程序 计算机编程基础 套路 练习]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Markdone使用语法]]></title>
     <url>%2F2018%2F09%2F22%2F%E7%AC%AC1%E7%AF%87%E5%8D%9A%E6%96%87%2F</url>
     <content type="text"><![CDATA[1.字体字号 2.分级标题3.超链接 4.列表5.插入图片 6.表格7.分割线 8.引用9.代码 10.流程图 1.字体字号 这是斜体或这也是斜体这是粗体这是加粗斜体这是删除线 改变字体、大小、颜色 我是黑体字我是微软雅黑我是华文彩云我是红色我是绿色我是蓝色我是尺寸我是黑体，绿色，尺寸为5 为文字添加背景色 背景色yellow 2.分级标题 一级标题二级标题三级标题四级标题五级标题六级标题3.超链接 行内格式：我的博客参考格式：[我的博客][1],百度[2][1]:https://gitergreat.github.io/[2]:https://www.baidu.com/自动链接：我的博客地址https://gitergreat.github.io/ 4.列表 无序列表：写法： 无序列表1 无序列表2 无序列表3 有序列表：写法：1.有序列表12.有序列表23.有序列表3 列表嵌套：上一级和下一级之间敲三个空格即可 5.插入图片 设置图片大小、位置 6.表格 表头1 表头2 表头3 表头4 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 默认左对齐 左对齐 居中对齐 右对齐 7.分割线 8.引用 这是引用内容 这是引用内容 这是引用内容 9.代码 print(&quot;Hello world!&quot;) 12include&lt;iostream&gt;using namespace std; 10.流程图 12345678st=&gt;start: 开始op=&gt;operation: My Operationcond=&gt;condition: Yes or No?e=&gt;endst-&gt;op-&gt;condcond(yes)-&gt;econd(no)-&gt;op&amp;]]></content>
