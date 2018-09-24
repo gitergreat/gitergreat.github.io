@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-23T04:33:05.973Z</updated>
+  <updated>2018-09-24T05:03:41.584Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,33 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python基本数据类型（二）</title>
+    <link href="http://yoursite.com/2018/09/24/Python-3-2/"/>
+    <id>http://yoursite.com/2018/09/24/Python-3-2/</id>
+    <published>2018-09-24T04:39:08.000Z</published>
+    <updated>2018-09-24T05:03:41.584Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>今天是中秋节，继续整理一下笔记吧。最近任务比较多，博客就慢慢更吧。<br>第三章第二节来通过一个实例来展示数字类型的具体应用，同时也让我知道努力学习的重要性。</em></p></blockquote><a id="more"></a><h1 id="实例3：天天向上的力量"><a href="#实例3：天天向上的力量" class="headerlink" title="实例3：天天向上的力量"></a>实例3：天天向上的力量</h1><hr><h2 id="1-。的力量"><a href="#1-。的力量" class="headerlink" title="1%。的力量"></a>1%。的力量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#DayDayUpQ1.py</span><br><span class="line">dayup = pow(1.001,365)</span><br><span class="line">daydown = pow(0.999,365)</span><br><span class="line">print(&quot;向上：&#123;:.2f&#125;，向下：&#123;:.2f&#125;&quot;.format(dayup,daydown))</span><br></pre></td></tr></table></figure><p><em>结果：向上：1.44，向下：0.69</em></p><h2 id="5-。和1-的力量"><a href="#5-。和1-的力量" class="headerlink" title="5%。和1%的力量"></a>5%。和1%的力量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#DayDayUpQ2.py</span><br><span class="line">dayup = pow(1.001,365)</span><br><span class="line">dayfactor = 0.005</span><br><span class="line">dayup = pow(1+dayfactor,365)</span><br><span class="line">daydown = pow(1-dayfactor,365)</span><br><span class="line">print(&quot;向上：&#123;:.2f&#125;,向下：&#123;:.2f&#125;&quot;.format(dayup,daydown))</span><br></pre></td></tr></table></figure><p><em>5%。结果：向上：6.17，向下：0.16<br>1%结果：向上37.78，向下：0.03</em></p><h2 id="工作日努力，双休日休息"><a href="#工作日努力，双休日休息" class="headerlink" title="工作日努力，双休日休息"></a>工作日努力，双休日休息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#DayDayUpQ3.py</span><br><span class="line">dayup = 1.0</span><br><span class="line">dayfactor = 0.01</span><br><span class="line">for i in range(365):</span><br><span class="line">    if i % 7 in [6,0]:</span><br><span class="line">        dayup = dayup*(1-dayfactor)</span><br><span class="line">    else:</span><br><span class="line">        dayup = dayup*(1+dayfactor)</span><br><span class="line">print(&quot;工作日的力量：&#123;:.2f&#125;&quot;.format(dayup))</span><br></pre></td></tr></table></figure><p><em>结果：工作日的力量：4.63</em></p><h2 id="工作日的努力弥补"><a href="#工作日的努力弥补" class="headerlink" title="工作日的努力弥补"></a>工作日的努力弥补</h2><p>-工作日努力到什么水平才能与每天努力1%的结果相同呢？<br>（利用def和while）</p><h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#DayDayUpQ4.py</span><br><span class="line">def dayUp(df):</span><br><span class="line">    dayup = 1</span><br><span class="line">    for i in range(365):</span><br><span class="line">        if i % 7 in [6,0]:</span><br><span class="line">            dayup = dayup*(1 - 0.01)</span><br><span class="line">        else:</span><br><span class="line">            dayup = dayup*(1 + df)</span><br><span class="line">    return dayup</span><br><span class="line">dayfactor = 0.01</span><br><span class="line">while dayUp(dayfactor) &lt; 37.78:</span><br><span class="line">      dayfactor += 0.001</span><br><span class="line">      print(&quot;工作日的努力参数是:&#123;:.3f&#125;&quot;.format(dayfactor))</span><br></pre></td></tr></table></figure><p><em>结果：工作日的努力参数是：0.019</em></p><h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><ul><li>以上利用def保留字定义，且有参数df的函数可以实现参数不同时的代码共用。</li><li>while是执行循环的保留字<br><em>扩展：for…in… 计算思维、抽象和自动化<br>def…while… 试错</em></li></ul><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><strong>GRIT 坚毅——获得成功<br>持之以恒，天天向上的力量很惊人</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;今天是中秋节，继续整理一下笔记吧。最近任务比较多，博客就慢慢更吧。&lt;br&gt;第三章第二节来通过一个实例来展示数字类型的具体应用，同时也让我知道努力学习的重要性。&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python基本数据类型（一）</title>
-    <link href="http://yoursite.com/2018/09/23/Python-3/"/>
-    <id>http://yoursite.com/2018/09/23/Python-3/</id>
+    <link href="http://yoursite.com/2018/09/23/Python-3-1/"/>
+    <id>http://yoursite.com/2018/09/23/Python-3-1/</id>
     <published>2018-09-23T03:38:55.000Z</published>
     <updated>2018-09-23T04:33:05.973Z</updated>
     
