@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Greatness">
 <meta property="og:description" content="第三节是字符串类型及操作，加快进度了。…">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T15:59:33.454Z">
+<meta property="og:updated_time" content="2018-09-30T01:14:50.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基本数据类型（三）">
 <meta name="twitter:description" content="第三节是字符串类型及操作，加快进度了。…">
@@ -463,23 +463,99 @@ src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" a
 <td style="text-align:left">与eval(x)做了相反的工作，是一对函数</td>
 </tr>
 <tr>
-<td style="text-align:center">repr()</td>
-<td style="text-align:left"></td>
+<td style="text-align:center">repr(x)</td>
+<td style="text-align:left">返回一个对象的string格式</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:left"></td>
+<td style="text-align:center">hex(x)或eval()</td>
+<td style="text-align:left">整数x的十六进制或八进制小写形式字符串</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:left"></td>
+<td style="text-align:center">chr(u)</td>
+<td style="text-align:left">x为Unicode编码，返回其对应的字符</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:left"></td>
+<td style="text-align:center">ord(x)</td>
+<td style="text-align:left">x为字符，返回其对应的Unicode编码</td>
 </tr>
 </tbody>
 </table>
+<p> <em>注：Unicode编码：Python字符串中的每个字符都是Unicode编码</em></p>
+<h2 id="字符串处理方法"><a href="#字符串处理方法" class="headerlink" title="字符串处理方法"></a>字符串处理方法</h2><ul>
+<li>”方法“特指&lt;a>.&lt;b>()风格中的函数&lt;b>()</li>
+<li>方法本身也是函数，但与&lt;a>有关，&lt;a>.&lt;b>()风格使用</li>
+<li><p>字符串及变量也是&lt;a>,存在一些方法</p>
+<p><em>方法面向对象</em></p>
+<p><strong>一些方法形式提供的字符串处理功能</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法及使用</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">str.lower()或str.upper()</td>
+<td style="text-align:left">返回字符串的副本，全部字符小写/大写</td>
+</tr>
+<tr>
+<td style="text-align:center">str.split(sep=None)</td>
+<td style="text-align:left">返回一个列表，由str根据sep被分隔的部分组成</td>
+</tr>
+<tr>
+<td style="text-align:center">str.count(sub)</td>
+<td style="text-align:left">返回字串sub在str中出现的次数</td>
+</tr>
+<tr>
+<td style="text-align:center">str.replace(old,new)</td>
+<td style="text-align:left">返回字符串str副本，所有old字串被替换为new</td>
+</tr>
+<tr>
+<td style="text-align:center">str.center(width[,fillchar])</td>
+<td style="text-align:left">字符串str根据宽度width居中，fillchar可选</td>
+</tr>
+<tr>
+<td style="text-align:center">str.strip(chars)</td>
+<td style="text-align:left">从str中去掉在其左侧和右侧chars中列出的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">str.join(iter)</td>
+<td style="text-align:left">在iter变量出最后元素外的每个元素增加一个str</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串类型的格式化"><a href="#字符串类型的格式化" class="headerlink" title="字符串类型的格式化"></a>字符串类型的格式化</h2><p> -格式化是对字符串进行格式表达的方式<br> -字符串格式化使用.format()方法，用法如下：<br> &lt;模板字符串&gt;.format()<br> 槽{ }</p>
+<p> <strong>format()中参数的顺序和槽{}的顺序默认一一对应<br>   可以在槽中指定需要添加参数的位置</strong></p>
+<h3 id="format-方法的格式控制"><a href="#format-方法的格式控制" class="headerlink" title="format()方法的格式控制"></a>format()方法的格式控制</h3><table>
+<thead>
+<tr>
+<th>:</th>
+<th>&lt;填充&gt;</th>
+<th>&lt;对齐&gt;</th>
+<th>&lt;宽度&gt;</th>
+<th>&lt;,&gt;</th>
+<th>&lt;.精度&gt;</th>
+<th>&lt;类型&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引导符号</td>
+<td>用于填充单个字符</td>
+<td>&lt;左对齐  &gt;右对齐  ^居中对齐</td>
+<td>槽设定的输出宽度</td>
+<td>数字的千分位分隔符</td>
+<td>浮点数小数精度或字符串最大输出长度</td>
+<td>整数类型b,c,d,o,x,X（十六进制中字母大写）   浮点数类型e,E,f,%</td>
+</tr>
+</tbody>
+</table>
+<p>  例：</p>
+<p> format()方法的格式控制<br>  <code>&quot;{0:=^20}&quot;.format(&quot;PYTHON&quot;)</code><br>  :  ————引导符<br>  =  ————填充符号 填充=<br>  ^  ————居中对齐<br>  20  ———宽度</p>
+<p><em>省略填充对齐直接给出宽度<br>默认填充为空格<br>变量左对齐</em></p>
 
       
     </div>
@@ -661,7 +737,7 @@ src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" a
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的两类共四种表示方法"><span class="nav-number">1.1.</span> <span class="nav-text">字符串的两类共四种表示方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的序号"><span class="nav-number">1.2.</span> <span class="nav-text">字符串的序号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串的操作"><span class="nav-number">2.</span> <span class="nav-text">字符串的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的使用"><span class="nav-number">2.1.</span> <span class="nav-text">字符串的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的特殊字符"><span class="nav-number">2.2.</span> <span class="nav-text">字符串的特殊字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的操作符"><span class="nav-number">2.3.</span> <span class="nav-text">字符串的操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理函数"><span class="nav-number">2.4.</span> <span class="nav-text">字符串处理函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的两类共四种表示方法"><span class="nav-number">1.1.</span> <span class="nav-text">字符串的两类共四种表示方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的序号"><span class="nav-number">1.2.</span> <span class="nav-text">字符串的序号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串的操作"><span class="nav-number">2.</span> <span class="nav-text">字符串的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的使用"><span class="nav-number">2.1.</span> <span class="nav-text">字符串的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的特殊字符"><span class="nav-number">2.2.</span> <span class="nav-text">字符串的特殊字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的操作符"><span class="nav-number">2.3.</span> <span class="nav-text">字符串的操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理函数"><span class="nav-number">2.4.</span> <span class="nav-text">字符串处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串处理方法"><span class="nav-number">2.5.</span> <span class="nav-text">字符串处理方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串类型的格式化"><span class="nav-number">2.6.</span> <span class="nav-text">字符串类型的格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#format-方法的格式控制"><span class="nav-number">2.6.1.</span> <span class="nav-text">format()方法的格式控制</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
