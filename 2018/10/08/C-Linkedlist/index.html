@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构、C," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Greatness" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="最近学数据结构，做了一个链表的porject，用C实现的。感觉是对C语言的一个复习吧。记录一下，加深自己的熟悉程度。">
+<meta name="keywords" content="数据结构、C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表的各种操作">
+<meta property="og:url" content="http://yoursite.com/2018/10/08/C-Linkedlist/index.html">
+<meta property="og:site_name" content="Greatness">
+<meta property="og:description" content="最近学数据结构，做了一个链表的porject，用C实现的。感觉是对C语言的一个复习吧。记录一下，加深自己的熟悉程度。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T16:15:46.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="链表的各种操作">
+<meta name="twitter:description" content="最近学数据结构，做了一个链表的porject，用C实现的。感觉是对C语言的一个复习吧。记录一下，加深自己的熟悉程度。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/08/C-Linkedlist/"/>
+
+
+
+
+
+  <title>链表的各种操作 | Greatness</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/gitergreat/gitergreat.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Greatness</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录自己的学习过程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/08/C-Linkedlist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.W">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ki.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Greatness">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">链表的各种操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T19:10:06+08:00">
+                2018-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><em>最近学数据结构，做了一个链表的porject，用C实现的。<br>感觉是对C语言的一个复习吧。记录一下，加深自己的熟悉程度。</em></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><hr>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>project的要求就是写六个函数：<br>1.create函数：根据数组创建链表<br>2.locate函数：输入想寻找第i个结点，返回这个结点的地址，若找不到，则返回NULL。<br>3.max函数：在链表中寻找数据最大的结点。<br>4.reverse函数：将链表逆序。<br>5.tidyup函数：将有序链表的多余重复结点删除。<br>6.mergelists函数：合并两个链表，并按非递减顺序排列。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="一个结点-node"><a href="#一个结点-node" class="headerlink" title="一个结点(node)"></a>一个结点(node)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct link&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct link *next;</span><br><span class="line">&#125;Link;</span><br></pre></td></tr></table></figure>
+<p><em>链表是由一个个结点用指针连接起来组成的，结点是组成链表的基本单位。</em><br><em>对于单向链表而言，一个结点包含一个元素和一个指向下一个结点的指针。</em><br><em>用C实现可以利用结构体定义一个结点。</em><br><em>如果想用C++实现，可以利用类和模板进行定义。</em></p>
+<h3 id="head、tail、curr指针"><a href="#head、tail、curr指针" class="headerlink" title="head、tail、curr指针"></a>head、tail、curr指针</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct list&#123;</span><br><span class="line">	Link *head;</span><br><span class="line">	Link *tail;</span><br><span class="line">	int len;</span><br><span class="line">&#125;List;</span><br></pre></td></tr></table></figure>
+<p><em>对于一个有头结点的单项链表而言，需要定义一个头结点，头结点不存放元素。</em><br><em>头结点的作用就是使我们能够找到这个链表。</em><br><em>此外，还定义了一个tail指针，tail指针指向链表的最后一个元素，方便在链表的最后插入结点。</em><br><em>在具体的函数实现中，有时可能会用到额外的一个指针，姑且称之为curr指针，它可以用来遍历链表。<br>也可以用来指向当前的结点的上一个结点，以便我们在当前节点插入新的结点。<br>在这里我用了一个结构体，将head指针和tail指针以及len放入其中，目的是可以作为函数的参数，<br>方便我们调用，而且这也是一种安全的编程思路。</em></p>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="1-create函数"><a href="#1-create函数" class="headerlink" title="1.create函数"></a>1.create函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void create(List* plist,int *array,int arrlen)</span><br><span class="line">&#123;</span><br><span class="line">	plist-&gt;head = (Link*)malloc(sizeof(Link));    //创建一个头结点，并且为之分配内存</span><br><span class="line">	plist-&gt;tail = plist-&gt;head;</span><br><span class="line">	int i;</span><br><span class="line">	for(i=0; i&lt;arrlen; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Link *a = (Link*)malloc(sizeof(Link));    //创建结点</span><br><span class="line">		a-&gt;data = array[i];                       //将数组中的元素填入结点中</span><br><span class="line">		a-&gt;next = NULL;</span><br><span class="line">		plist-&gt;tail-&gt;next = a;                    //将结点连接到最后一个结点之后</span><br><span class="line">		plist-&gt;tail = plist-&gt;tail-&gt;next;          //将tail指针往后移动</span><br><span class="line">		plist-&gt;len = plist-&gt;len + 1;              //每连接一个结点，将链表的长度加1</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-locate函数"><a href="#2-locate函数" class="headerlink" title="2.locate函数"></a>2.locate函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Link* locate(List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;-------------------- 定位结点所在的地址: --------------------\n\n&quot;);</span><br><span class="line">	int i,j;</span><br><span class="line">	Link *p;</span><br><span class="line">	</span><br><span class="line">	printf(&quot;请输入你想寻找第几个结点：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;i);</span><br><span class="line">	getchar();</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">	//遍历链表（利用curr指针遍历），寻找是否存在第i个结点</span><br><span class="line">	//注意第一个有元素结点是是首元结点（第一个结点）</span><br><span class="line">	//return用法：出现return立刻退出函数，并返回return后的元素</span><br><span class="line">	</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(j == i)</span><br><span class="line">		&#123;</span><br><span class="line">			return p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-max函数"><a href="#3-max函数" class="headerlink" title="3.max函数"></a>3.max函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">int max(List* plist,int* isfind)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;----------------- 确定链表中的值最大的结点: -----------------\n\n&quot;);</span><br><span class="line">	int j;</span><br><span class="line">	int i = 0;</span><br><span class="line">	int maxnode[10];                           //用来记录最大值所对应的结点</span><br><span class="line">	int maximum = plist-&gt;head-&gt;next-&gt;data;    </span><br><span class="line">	</span><br><span class="line">	Link *p = plist-&gt;head-&gt;next;</span><br><span class="line">	</span><br><span class="line">	if(p == NULL)&#123;                             //判断是否为空链表</span><br><span class="line">		isfind = 0;</span><br><span class="line">		printf(&quot;链表为空\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	//遍历链表，找最大值</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)&#123;</span><br><span class="line">		if(maximum &lt; p-&gt;data)&#123;</span><br><span class="line">			maximum = p-&gt;data;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//根据最大值，找所有取到最大值的结点</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)&#123;</span><br><span class="line">		if(maximum == p-&gt;data)&#123;</span><br><span class="line">			maxnode[i] = j;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//将所有取到最大值的结点输出</span><br><span class="line">	printf(&quot;所有取到最大值的结点为：&quot;);</span><br><span class="line">	for(j = 0; j&lt;i; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;,maxnode[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	return maximum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-reverse函数"><a href="#4-reverse函数" class="headerlink" title="4.reverse函数"></a>4.reverse函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void reverse(List* prelist,List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;-------------------- 倒置链表元素的顺序: --------------------\n\n&quot;);</span><br><span class="line">	</span><br><span class="line">	int i;</span><br><span class="line">	Link *p,*q;</span><br><span class="line">	</span><br><span class="line">	for(i = 1; i &lt;= plist-&gt;len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		//每次遍历链表找到最后两个结点</span><br><span class="line">		p = plist-&gt;head-&gt;next;</span><br><span class="line">		q = plist-&gt;head-&gt;next;</span><br><span class="line">		</span><br><span class="line">		while(p-&gt;next != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			q = p;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		//第一次的遍历时，创建一个新的头结点，并与最后一个结点相连</span><br><span class="line">		if(i == 1)&#123;</span><br><span class="line">			prelist-&gt;head = (Link*)malloc(sizeof(Link));</span><br><span class="line">			prelist-&gt;tail = p;</span><br><span class="line">			prelist-&gt;head-&gt;next = p;</span><br><span class="line">			q-&gt;next = NULL;  //断开倒数第二个结点和最后一个结点的连接</span><br><span class="line">		//之后每次都把新的结点插入到最后，并把原链表的倒数第二个结点和最后一个结点的连接断开</span><br><span class="line">		&#125;else&#123; </span><br><span class="line">			prelist-&gt;tail-&gt;next = p;</span><br><span class="line">			prelist-&gt;tail = p;</span><br><span class="line">			q-&gt;next = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>还有另外一种较简便的方法以后补充</em></p>
+<h3 id="5-tidyup函数"><a href="#5-tidyup函数" class="headerlink" title="5.tidyup函数"></a>5.tidyup函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void tidyup(List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;------------------- 删除值相同的多余结点: -------------------\n\n&quot;);</span><br><span class="line">	Link *p,*q,*r;</span><br><span class="line">	</span><br><span class="line">	p = plist-&gt;head-&gt;next;</span><br><span class="line">	q = p-&gt;next;</span><br><span class="line">	</span><br><span class="line">	/*因为链表是有序的 每次比较相邻两个结点，如果值相同，则释放掉后面的结点</span><br><span class="line">	并把q指针往后移，p指针保持不变，与后面的一个结点连接后继续比较*/</span><br><span class="line">	/*当值不相同时，两个指针同时向后移动*/</span><br><span class="line">	while(p-&gt;next != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p-&gt;data == q-&gt;data)</span><br><span class="line">		&#123;</span><br><span class="line">			p-&gt;next = q-&gt;next;</span><br><span class="line">			r = q;</span><br><span class="line">			free(r);</span><br><span class="line">			q = p-&gt;next;</span><br><span class="line">			plist-&gt;len = plist-&gt;len - 1;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			p = q;</span><br><span class="line">			q = q-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-mergelists函数"><a href="#6-mergelists函数" class="headerlink" title="6.mergelists函数"></a>6.mergelists函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">void mergelists(List* plist1, List *plist2, List *plist3)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;----------------------- 合并两个链表: -----------------------\n\n&quot;);</span><br><span class="line">	Link *cur = NULL;</span><br><span class="line">	Link *p = plist1-&gt;head;</span><br><span class="line">	Link *q = plist2-&gt;head;</span><br><span class="line"></span><br><span class="line">	//如果两个链表中有空链表，合并的链表就是另一个链表本身</span><br><span class="line">	if(NULL == p-&gt;next)&#123;</span><br><span class="line">		plist3-&gt;head = q;</span><br><span class="line">	&#125;else if(NULL == q-&gt;next)&#123;</span><br><span class="line">		plist3-&gt;head = p;</span><br><span class="line">	&#125;</span><br><span class="line">	//判断哪一个链表的首元结点值更小，合并的链表的头结点就为那个链表的头结点</span><br><span class="line">	if(p-&gt;next-&gt;data &lt;= q-&gt;next-&gt;data)&#123;</span><br><span class="line">		plist3-&gt;head = p;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		plist3-&gt;head = q;</span><br><span class="line">	&#125;</span><br><span class="line">	//p,q指针分别移动到两个链表的首元结点上，cur在合并链表的头结点</span><br><span class="line">	p = p-&gt;next;</span><br><span class="line">	q = q-&gt;next;</span><br><span class="line">	cur = plist3-&gt;head;</span><br><span class="line">	</span><br><span class="line">	//从首元开始遍历，元素小的连接在plist3后面，然后向后移动对应链表的指针，继续比较</span><br><span class="line">	while(p != NULL &amp;&amp; q != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p-&gt;data &lt;= q-&gt;data)&#123;</span><br><span class="line">			cur-&gt;next = p;</span><br><span class="line">			cur = p;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line">			</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			cur-&gt;next = q;</span><br><span class="line">			cur = q;</span><br><span class="line">			q = q-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	如果两个链表还没有连接完的，就把剩下的结点直接连接在plist3后面</span><br><span class="line">	while(p != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = p;</span><br><span class="line">		cur = p;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	while(q != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = q;</span><br><span class="line">		cur = q;</span><br><span class="line">		q = q-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	//计算plist3长度，为两链表长度之和</span><br><span class="line">	plist3-&gt;len = plist1-&gt;len + plist2-&gt;len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef struct link&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct link *next;</span><br><span class="line">&#125;Link;</span><br><span class="line"></span><br><span class="line">typedef struct list&#123;</span><br><span class="line">	Link *head;</span><br><span class="line">	Link *tail;</span><br><span class="line">	int len;</span><br><span class="line">&#125;List;</span><br><span class="line"></span><br><span class="line">void create(List* plist,int* array,int arrlen);</span><br><span class="line">Link* locate(List* plist);</span><br><span class="line">int max(List* plist,int* isfind);</span><br><span class="line">void reverse(List* prelist,List* plist);</span><br><span class="line">void tidyup(List* plist);</span><br><span class="line">void mergelists(List* plist1,List* plist2,List *plist3);</span><br><span class="line"></span><br><span class="line">void create(List* plist,int *array,int arrlen)</span><br><span class="line">&#123;</span><br><span class="line">	plist-&gt;head = (Link*)malloc(sizeof(Link));</span><br><span class="line">	plist-&gt;tail = plist-&gt;head;</span><br><span class="line">	int i;</span><br><span class="line">	for(i=0; i&lt;arrlen; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Link *a = (Link*)malloc(sizeof(Link));</span><br><span class="line">		a-&gt;data = array[i];</span><br><span class="line">		a-&gt;next = NULL;</span><br><span class="line">		plist-&gt;tail-&gt;next = a;</span><br><span class="line">		plist-&gt;tail = plist-&gt;tail-&gt;next;</span><br><span class="line">		plist-&gt;len = plist-&gt;len + 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Link* locate(List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;-------------------- 定位结点所在的地址: --------------------\n\n&quot;);</span><br><span class="line">	int i,j;</span><br><span class="line">	Link *p;</span><br><span class="line">	</span><br><span class="line">	printf(&quot;请输入你想寻找第几个结点：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;i);</span><br><span class="line">	getchar();</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(j == i)</span><br><span class="line">		&#123;</span><br><span class="line">			return p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return NULL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int max(List* plist,int* isfind)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;----------------- 确定链表中的值最大的结点: -----------------\n\n&quot;);</span><br><span class="line">	int j;</span><br><span class="line">	int i = 0;</span><br><span class="line">	int maxnode[10];</span><br><span class="line">	int maximum = plist-&gt;head-&gt;next-&gt;data;</span><br><span class="line">	</span><br><span class="line">	Link *p = plist-&gt;head-&gt;next;</span><br><span class="line">	</span><br><span class="line">	if(p == NULL)&#123;</span><br><span class="line">		isfind = 0;</span><br><span class="line">		printf(&quot;链表为空\n&quot;);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)&#123;</span><br><span class="line">		if(maximum &lt; p-&gt;data)&#123;</span><br><span class="line">			maximum = p-&gt;data;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for(p = plist-&gt;head-&gt;next,j = 1; p ;p = p-&gt;next,j++)&#123;</span><br><span class="line">		if(maximum == p-&gt;data)&#123;</span><br><span class="line">			maxnode[i] = j;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	printf(&quot;所有取到最大值的结点为：&quot;);</span><br><span class="line">	for(j = 0; j&lt;i; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;,maxnode[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	return maximum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void reverse(List* prelist,List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;-------------------- 倒置链表元素的顺序: --------------------\n\n&quot;);</span><br><span class="line">	</span><br><span class="line">	int i;</span><br><span class="line">	Link *p,*q;</span><br><span class="line">	</span><br><span class="line">	for(i = 1; i &lt;= plist-&gt;len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		p = plist-&gt;head-&gt;next;</span><br><span class="line">		q = plist-&gt;head-&gt;next;</span><br><span class="line">		</span><br><span class="line">		while(p-&gt;next != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			q = p;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		if(i == 1)&#123;</span><br><span class="line">			prelist-&gt;head = (Link*)malloc(sizeof(Link));</span><br><span class="line">			prelist-&gt;tail = p;</span><br><span class="line">			prelist-&gt;head-&gt;next = p;</span><br><span class="line">			q-&gt;next = NULL;</span><br><span class="line">		&#125;else&#123; </span><br><span class="line">			prelist-&gt;tail-&gt;next = p;</span><br><span class="line">			prelist-&gt;tail = p;</span><br><span class="line">			q-&gt;next = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void tidyup(List* plist)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;------------------- 删除值相同的多余结点: -------------------\n\n&quot;);</span><br><span class="line">	Link *p,*q,*r;</span><br><span class="line">	</span><br><span class="line">	p = plist-&gt;head-&gt;next;</span><br><span class="line">	q = p-&gt;next;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	while(p-&gt;next != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p-&gt;data == q-&gt;data)</span><br><span class="line">		&#123;</span><br><span class="line">			p-&gt;next = q-&gt;next;</span><br><span class="line">			r = q;</span><br><span class="line">			free(r);</span><br><span class="line">			q = p-&gt;next;</span><br><span class="line">			plist-&gt;len = plist-&gt;len - 1;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			p = q;</span><br><span class="line">			q = q-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void mergelists(List* plist1, List *plist2, List *plist3)</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;----------------------- 合并两个链表: -----------------------\n\n&quot;);</span><br><span class="line">	Link *cur = NULL;</span><br><span class="line">	Link *p = plist1-&gt;head;</span><br><span class="line">	Link *q = plist2-&gt;head;</span><br><span class="line"></span><br><span class="line">	if(NULL == p-&gt;next)&#123;</span><br><span class="line">		plist3-&gt;head = q;</span><br><span class="line">	&#125;else if(NULL == q-&gt;next)&#123;</span><br><span class="line">		plist3-&gt;head = p;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	if(p-&gt;next-&gt;data &lt;= q-&gt;next-&gt;data)&#123;</span><br><span class="line">		plist3-&gt;head = p;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		plist3-&gt;head = q;</span><br><span class="line">	&#125;</span><br><span class="line">	p = p-&gt;next;</span><br><span class="line">	q = q-&gt;next;</span><br><span class="line">	cur = plist3-&gt;head;</span><br><span class="line">	</span><br><span class="line">	while(p != NULL &amp;&amp; q != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p-&gt;data &lt;= q-&gt;data)&#123;</span><br><span class="line">			cur-&gt;next = p;</span><br><span class="line">			cur = p;</span><br><span class="line">			p = p-&gt;next;</span><br><span class="line">			</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			cur-&gt;next = q;</span><br><span class="line">			cur = q;</span><br><span class="line">			q = q-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	while(p != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = p;</span><br><span class="line">		cur = p;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	while(q != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = q;</span><br><span class="line">		cur = q;</span><br><span class="line">		q = q-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	plist3-&gt;len = plist1-&gt;len + plist2-&gt;len;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line"> &#123;</span><br><span class="line"> 	int a[] = &#123;5,5,5,7,9,16,27,27,38,41&#125;;</span><br><span class="line"> 	int m[] = &#123;1,5,6,8,8,10,28,49,50,51&#125;;</span><br><span class="line">	int n[] = &#123;2,4,7,10,12,14,18,24,29,30&#125;;</span><br><span class="line"> 	int lena = sizeof(a)/sizeof(int),lenm = sizeof(m)/sizeof(int),lenn = sizeof(n)/sizeof(int);</span><br><span class="line">	int x,maximum,isfind = 1;</span><br><span class="line">	</span><br><span class="line">	Link *p;</span><br><span class="line"> 	</span><br><span class="line">	List list,listm,listn,relist,medlist,tidylist,mergelist;</span><br><span class="line">	</span><br><span class="line"> 	list.len = relist.len = tidylist.len = listm.len = listn.len = 0;</span><br><span class="line">	</span><br><span class="line">	start: printf(&quot;----------------- 请选择想对链表进行的操作: -----------------\n&quot;);</span><br><span class="line"> 	printf(&quot;     1.定位结点所在的地址       2.确定链表中的值最大的结点\n     3.倒置链表元素的顺序       4.删除值相同的多余结点\n     5.合并两个链表             6.退出\n&quot;);</span><br><span class="line"> 	scanf(&quot;%d&quot;,&amp;x);</span><br><span class="line">	getchar();</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">	if(x == 1||x == 2||x == 3||x == 4)&#123;</span><br><span class="line">		create(&amp;list,a,lena);</span><br><span class="line">		printf(&quot;---------------- 已经根据数组创建了以下链表: ----------------\n\n&quot;);</span><br><span class="line">		printf(&quot;list:\n&quot;);</span><br><span class="line">		for(p = list.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n\n&quot;);</span><br><span class="line">	&#125;else if (x == 5)&#123;</span><br><span class="line">		create(&amp;listm,m,lenm);</span><br><span class="line">		create(&amp;listn,n,lenn);</span><br><span class="line">		</span><br><span class="line">		printf(&quot;---------------- 已经根据数组创建了以下链表: ----------------\n\n&quot;);</span><br><span class="line">		printf(&quot;listm:\n&quot;);</span><br><span class="line">		for(p = listm.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n\n&quot;);</span><br><span class="line">		</span><br><span class="line">		printf(&quot;listn:\n&quot;);</span><br><span class="line">		for(p = listn.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"> 	switch(x)</span><br><span class="line">	&#123;</span><br><span class="line">		case 1: </span><br><span class="line">			p = locate(&amp;list);</span><br><span class="line">			if(p != NULL)&#123;</span><br><span class="line">			printf(&quot;该结点的地址为：%#X\n\n&quot;,p);</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				printf(&quot;未找到该结点\n\n&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			goto start;</span><br><span class="line">			</span><br><span class="line">		case 2:</span><br><span class="line">			maximum = max(&amp;list,&amp;isfind);</span><br><span class="line">			</span><br><span class="line">			if(isfind)&#123;</span><br><span class="line">			printf(&quot;最大值是%d\n\n&quot;,maximum);</span><br><span class="line">			&#125;</span><br><span class="line">			goto start;</span><br><span class="line">			</span><br><span class="line">		case 3:</span><br><span class="line">			create(&amp;medlist,a,lena);</span><br><span class="line">			reverse(&amp;relist,&amp;medlist);</span><br><span class="line">			printf(&quot;元素倒置后的链表为relist:\n&quot;);</span><br><span class="line">			for(p = relist.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">			&#123;</span><br><span class="line">				printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">			&#125;</span><br><span class="line">			printf(&quot;\n\n&quot;);</span><br><span class="line">			goto start;</span><br><span class="line">			</span><br><span class="line">		case 4:</span><br><span class="line">			create(&amp;tidylist,a,lena);</span><br><span class="line">			tidyup(&amp;tidylist);</span><br><span class="line">			printf(&quot;删除值相同的多余结点后的链表为tidylist:\n&quot;);</span><br><span class="line">			for(p = tidylist.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">			&#123;</span><br><span class="line">				printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">			&#125;</span><br><span class="line">			printf(&quot;\n\n&quot;);</span><br><span class="line">			goto start;</span><br><span class="line">			</span><br><span class="line">		case 5:</span><br><span class="line">			mergelists(&amp;listm, &amp;listn, &amp;mergelist);</span><br><span class="line">			printf(&quot;合并后的链表为mergelist:\n&quot;);</span><br><span class="line">			for(p = mergelist.head-&gt;next; p; p = p-&gt;next)</span><br><span class="line">			&#123;</span><br><span class="line">				printf(&quot;%d   &quot;,p-&gt;data);</span><br><span class="line">			&#125;</span><br><span class="line">			printf(&quot;\n\n&quot;);</span><br><span class="line">			goto start;</span><br><span class="line">		case 6:</span><br><span class="line">			printf(&quot;---------------------- 谢谢使用，再见! ----------------------\n\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		default:</span><br><span class="line">			goto start;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构、C/" rel="tag"># 数据结构、C</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/Python-3-3/" rel="next" title="Python基本数据类型（三）">
+                <i class="fa fa-chevron-left"></i> Python基本数据类型（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/ki.jpg"
+                alt="Mr.W" />
+            
+              <p class="site-author-name" itemprop="name">Mr.W</p>
+              <p class="site-description motion-element" itemprop="description">网络安全、程序设计</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链表"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本要求"><span class="nav-number">1.1.</span> <span class="nav-text">基本要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个结点-node"><span class="nav-number">1.2.1.</span> <span class="nav-text">一个结点(node)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head、tail、curr指针"><span class="nav-number">1.2.2.</span> <span class="nav-text">head、tail、curr指针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">1.3.</span> <span class="nav-text">算法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-create函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.create函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-locate函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.locate函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-max函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.max函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-reverse函数"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.reverse函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-tidyup函数"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.tidyup函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-mergelists函数"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.mergelists函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码"><span class="nav-number">1.4.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.W</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+  </div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
