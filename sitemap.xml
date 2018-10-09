@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/09/Python-3-4/</loc>
+    
+    <lastmod>2018-10-09T10:41:16.026Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/09/future-leaning/</loc>
+    
+    <lastmod>2018-10-09T10:25:44.053Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/08/C-Linkedlist/</loc>
     
     <lastmod>2018-10-08T16:15:46.593Z</lastmod>
