@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-09T10:41:16.026Z</updated>
+  <updated>2018-10-10T00:32:52.368Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python基本数据类型（五）</title>
+    <link href="http://yoursite.com/2018/10/10/Python-3-5/"/>
+    <id>http://yoursite.com/2018/10/10/Python-3-5/</id>
+    <published>2018-10-10T00:20:00.000Z</published>
+    <updated>2018-10-10T00:32:52.368Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第五节，应用Python time库来实现文本进度条</em></p></blockquote><a id="more"></a><h1 id="实例4：文本进度条"><a href="#实例4：文本进度条" class="headerlink" title="实例4：文本进度条"></a>实例4：文本进度条</h1><hr><h2 id="文本进度条简述"><a href="#文本进度条简述" class="headerlink" title="文本进度条简述"></a>文本进度条简述</h2><p>-采用字符串方式打印可以动态变化的文本进度条<br>-进度条需要能在一行中逐渐变化</p><h2 id="文本进度条的简单开始"><a href="#文本进度条的简单开始" class="headerlink" title="文本进度条的简单开始"></a>文本进度条的简单开始</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#TextProBarV1.py</span><br><span class="line">import time</span><br><span class="line">scale = 10</span><br><span class="line">print(&quot;------执行开始------&quot;)</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &apos;*&apos; * i</span><br><span class="line">    b = &apos;.&apos; * (scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b))</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;------执行结束------&quot;)</span><br></pre></td></tr></table></figure><h2 id="文本进度条的单行动态刷新"><a href="#文本进度条的单行动态刷新" class="headerlink" title="文本进度条的单行动态刷新"></a>文本进度条的单行动态刷新</h2><p>-刷新的本质是：用后打印的字符覆盖之前的字符<br>-不能换行：print()需要被控制<br>-要能回退：打印后光标退回到之前的位置 \r</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#TextProBarV1.py</span><br><span class="line">import time</span><br><span class="line">for i in range(101):</span><br><span class="line">    print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;)      #end 使打印完字符串后不换行，停留在当前位置</span><br><span class="line">    time.sleep(0.1)</span><br></pre></td></tr></table></figure><h2 id="文本进度条实例完整效果"><a href="#文本进度条实例完整效果" class="headerlink" title="文本进度条实例完整效果"></a>文本进度条实例完整效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#TextProBarV3.py</span><br><span class="line">import time</span><br><span class="line">scale = 50</span><br><span class="line">print(&quot;执行开始&quot;.center(scale//2,&quot;-&quot;))      #字符串函数   </span><br><span class="line">start = time.perf_counter()</span><br><span class="line">for i in range(scale+1):</span><br><span class="line">    a = &apos;*&apos; * i</span><br><span class="line">    b = &apos;.&apos; * (scale - i)</span><br><span class="line">    c = (i/scale)*100</span><br><span class="line">    dur = time.perf_counter() - start</span><br><span class="line">    print(&quot;\r&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&apos;&apos;)</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">print(&quot;\n&quot;+&quot;执行结束&quot;.center(scale//2,&apos;-&apos;))</span><br></pre></td></tr></table></figure><h2 id="文本进度条问题举一反三："><a href="#文本进度条问题举一反三：" class="headerlink" title="文本进度条问题举一反三："></a>文本进度条问题举一反三：</h2><p>-文本进度条程序使用了perf_counter()计时<br>-计时方法适合各类需要统计时间的计算问题<br>-例如：比较不同算法时间、统计部分程序运行时间</p><p>进度条拓展：<br>-在任何运行时间较长的程序中增加进度条<br>-在任何希望提高用户体验的应用中增加进度条<br>-进度条是人机交互的纽带之一</p><p>文本进度条的不同设计函数<br>——开始慢后来快体验会更好</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第五节，应用Python time库来实现文本进度条&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python基本数据类型（四）</title>

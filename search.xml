@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python基本数据类型（五）]]></title>
+    <url>%2F2018%2F10%2F10%2FPython-3-5%2F</url>
+    <content type="text"><![CDATA[第五节，应用Python time库来实现文本进度条 实例4：文本进度条 文本进度条简述-采用字符串方式打印可以动态变化的文本进度条-进度条需要能在一行中逐渐变化 文本进度条的简单开始1234567891011#TextProBarV1.pyimport timescale = 10print(&quot;------执行开始------&quot;)for i in range(scale+1): a = &apos;*&apos; * i b = &apos;.&apos; * (scale - i) c = (i/scale)*100 print(&quot;&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&quot;.format(c,a,b)) time.sleep(0.1)print(&quot;------执行结束------&quot;) 文本进度条的单行动态刷新-刷新的本质是：用后打印的字符覆盖之前的字符-不能换行：print()需要被控制-要能回退：打印后光标退回到之前的位置 \r 12345#TextProBarV1.pyimport timefor i in range(101): print(&quot;\r&#123;:3&#125;%&quot;.format(i),end=&quot;&quot;) #end 使打印完字符串后不换行，停留在当前位置 time.sleep(0.1) 文本进度条实例完整效果12345678910111213#TextProBarV3.pyimport timescale = 50print(&quot;执行开始&quot;.center(scale//2,&quot;-&quot;)) #字符串函数 start = time.perf_counter()for i in range(scale+1): a = &apos;*&apos; * i b = &apos;.&apos; * (scale - i) c = (i/scale)*100 dur = time.perf_counter() - start print(&quot;\r&#123;:^3.0f&#125;%[&#123;&#125;-&gt;&#123;&#125;]&#123;:.2f&#125;s&quot;.format(c,a,b,dur),end=&apos;&apos;) time.sleep(0.1)print(&quot;\n&quot;+&quot;执行结束&quot;.center(scale//2,&apos;-&apos;)) 文本进度条问题举一反三：-文本进度条程序使用了perf_counter()计时-计时方法适合各类需要统计时间的计算问题-例如：比较不同算法时间、统计部分程序运行时间 进度条拓展：-在任何运行时间较长的程序中增加进度条-在任何希望提高用户体验的应用中增加进度条-进度条是人机交互的纽带之一 文本进度条的不同设计函数——开始慢后来快体验会更好]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python基本数据类型（四）]]></title>
     <url>%2F2018%2F10%2F09%2FPython-3-4%2F</url>
     <content type="text"><![CDATA[第四节time库的使用 time库的使用 time库简介time库是Python中处理时间的标准库 -计算机时间的表达-提供获取系统时间并格式化输出功能-提供系统级精确计时功能，用于程序性能分析 包含三种函数：-时间获取：time()、ctime()、gmtime()-时间格式化：strftime()、strptime()-程序计时：sleep()、perf_counter() 时间获取函数: time()–获取当前时间戳，即计算机内部时间值，浮点数time.time()–表示从1970年1月1日零点开始到现在以秒为单位的时间值 ctime()–获取当前时间并以易读的方式表示，返回字符串time.ctime()–获取人类易读时间的最简单函数 gmtime()–获取当前时间，表示为计算机可处理的时间格式time.gmtime() 时间格式化将时间以合理的方式展示出来-格式化：类似字符串格式化，需要有展示模板-展示模板由特定的格式化控制符组成-strftime()方法 将时间字符串转化为时间变量例：1234t = time.gmtime()time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,t)timeStr = &apos;2018-01-26 12:55:20&apos;time.strptime(timeStr,&quot;%Y-%m-%d %H:%M:%S&quot;) 程序计时应用-程序计时指测量起止动作所经历时间的过程-测量时间：perf_counter() ——精准-产生时间：sleep()]]></content>
