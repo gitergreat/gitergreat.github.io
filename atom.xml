@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-10T00:32:52.368Z</updated>
+  <updated>2018-10-10T06:38:05.916Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python程序控制结构（二）</title>
+    <link href="http://yoursite.com/2018/10/10/Python-4-2/"/>
+    <id>http://yoursite.com/2018/10/10/Python-4-2/</id>
+    <published>2018-10-10T06:34:00.000Z</published>
+    <updated>2018-10-10T06:38:05.916Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第二节，实例5：身体质量指数BMI</em></p></blockquote><a id="more"></a><h1 id="身体质量指数BMI"><a href="#身体质量指数BMI" class="headerlink" title="身体质量指数BMI"></a>身体质量指数BMI</h1><hr><h2 id="背景分析"><a href="#背景分析" class="headerlink" title="背景分析"></a>背景分析</h2><p>BMI:体重（kg）/身高的平方（m）<br>问题需求:<br>-输入：给定身高和体重值<br>-输出：BMI国内标准 国际标准</p><h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#CalBMIv3.py</span><br><span class="line">height,weight = eval(input(&quot;请输入身高（米）和体重（公斤）[逗号隔开]：&quot;))</span><br><span class="line">bmi = weight / pow(height,2)</span><br><span class="line">print(&quot;BMI数值为:&#123;:.2f&#125;&quot;.format(bmi))</span><br><span class="line">who,nat = &quot;&quot;,&quot;&quot;</span><br><span class="line">if bmi &lt; 18.5:</span><br><span class="line">    who,nat = &quot;偏瘦&quot;,&quot;偏瘦&quot;</span><br><span class="line">elif 18.5&lt;=bmi&lt;24:</span><br><span class="line">    who,nat = &quot;正常&quot;,&quot;正常&quot;</span><br><span class="line">elif 24&lt;=bmi&lt;25:</span><br><span class="line">    who,nat = &quot;正常&quot;,&quot;偏胖&quot;</span><br><span class="line">elif 25&lt;=bmi&lt;28:</span><br><span class="line">    who,nat = &quot;偏胖&quot;,&quot;偏胖&quot;</span><br><span class="line">elif 28&lt;=bmi&lt;30:</span><br><span class="line">    who,nat = &quot;偏胖&quot;,&quot;肥胖&quot;</span><br><span class="line">else:</span><br><span class="line">    who,nat = &quot;肥胖&quot;,&quot;肥胖&quot;</span><br><span class="line">print(&quot;BMI指标为：国际&apos;&#123;0&#125;&apos;，国内‘&#123;1&#125;&apos;&quot;.format(who,nat))</span><br></pre></td></tr></table></figure><p>举一反三：<br>关注多条件的组合：<br>-多分支条件之间的覆盖是重要问题<br>-程序可运行，但不正确，要注意多分支<br>-分支结构是程序的重要框架，读程序先看分支</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第二节，实例5：身体质量指数BMI&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python程序控制结构（一）</title>
+    <link href="http://yoursite.com/2018/10/10/Python-4-1/"/>
+    <id>http://yoursite.com/2018/10/10/Python-4-1/</id>
+    <published>2018-10-10T05:55:39.000Z</published>
+    <updated>2018-10-10T06:21:00.999Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第四章，程序控制结构。包括分支、循环结构。以及两个实例和random库的使用。</em></p></blockquote><a id="more"></a><h1 id="程序分支结构"><a href="#程序分支结构" class="headerlink" title="程序分支结构"></a>程序分支结构</h1><h2 id="1、单分支结构"><a href="#1、单分支结构" class="headerlink" title="1、单分支结构"></a>1、单分支结构</h2><p>if&lt;条件&gt;:<br>  &lt;语句块&gt;</p><p>if Ture:<br>  &lt;语句块&gt;</p><h2 id="2、二分支结构"><a href="#2、二分支结构" class="headerlink" title="2、二分支结构"></a>2、二分支结构</h2><p>if…else</p><p>紧凑形式：适用于简单表达式的二分支结构<br>&lt;表达式1&gt;if&lt;条件&gt;else&lt;表达式2&gt;<br>（表达式：是语句的一部分  不支持赋值）</p><h2 id="3、多分支结构"><a href="#3、多分支结构" class="headerlink" title="3、多分支结构"></a>3、多分支结构</h2><p>if &lt;条件&gt;:<br>  &lt;语句块1&gt;<br>elif:<br>  &lt;语句块2&gt;<br>  ……<br>else:<br>  &lt;语句块2&gt;</p><p><strong>注意：多条件之间的包含关系<br>    变量取值范围的覆盖</strong></p><h2 id="4、条件判断及组合"><a href="#4、条件判断及组合" class="headerlink" title="4、条件判断及组合"></a>4、条件判断及组合</h2><p>操作符：&lt;  &lt;= &gt;= &gt; == !=</p><p>用于条件判断的三个保留字:<br>x and y<br>x or y<br>not x<br>与或非</p><h2 id="5、程序的异常处理"><a href="#5、程序的异常处理" class="headerlink" title="5、程序的异常处理"></a>5、程序的异常处理</h2><p>try:<br>  &lt;语句块1&gt;<br>except:<br>  &lt;语句块2&gt;</p><p>try:<br>  &lt;语句块1&gt;<br>except&lt;异常类型&gt;:<br>  &lt;语句块2&gt;<br>&lt;异常类型&gt;   NameError</p><p>try:<br>  &lt;语句块1&gt;<br>except:<br>  &lt;语句块2&gt;<br>else:<br>  &lt;语句块3&gt;<br>finally:<br>  &lt;语句块4&gt;</p><p>-finally对应语句块4一定执行<br>-else对应语句块3在不发生异常时执行</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第四章，程序控制结构。包括分支、循环结构。以及两个实例和random库的使用。&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python基本数据类型（五）</title>
@@ -185,11 +233,11 @@
   </entry>
   
   <entry>
-    <title>python基本图形绘制</title>
+    <title>Python基本图形绘制</title>
     <link href="http://yoursite.com/2018/09/22/python-2/"/>
     <id>http://yoursite.com/2018/09/22/python-2/</id>
     <published>2018-09-22T12:13:29.000Z</published>
-    <updated>2018-09-22T13:14:33.977Z</updated>
+    <updated>2018-10-10T06:31:03.542Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p><em>继续Python笔记的整理，第二章是库的基本用法以及利用turtle库绘图的实例。</em></p></blockquote><a id="more"></a><h1 id="深入理解Python语言"><a href="#深入理解Python语言" class="headerlink" title="深入理解Python语言"></a>深入理解Python语言</h1><hr><h2 id="计算机技术的演进："><a href="#计算机技术的演进：" class="headerlink" title="计算机技术的演进："></a>计算机技术的演进：</h2><p>1.计算机系统结构时代   计算机能力问题<br>2.网络和视窗时代          交互问题<br>3.复杂信息系统时代       数据问题<br>4.人工智能时代           人类问题<br>当前:新计算时代</p><h2 id="编程语言的多样初心："><a href="#编程语言的多样初心：" class="headerlink" title="编程语言的多样初心："></a>编程语言的多样初心：</h2><p>C：<br>指针、内存、数据类型<br>语言本质：理解计算机系统结构<br>解决问题：性能<br>java：<br>面向对象<br>对象、跨平台、运行时<br>…<br>python：<br>理解问题的求解</p><h2 id="python语言的特点："><a href="#python语言的特点：" class="headerlink" title="python语言的特点："></a>python语言的特点：</h2><p><em>通用性</em>强制可读性<br><em>较少的底层语法元素</em>多种编程方式<br>*支持中文字符</p><h2 id="语法简介"><a href="#语法简介" class="headerlink" title="语法简介"></a>语法简介</h2><p>生态高产:python是最高产的程序设计语言<br>工具决定思维</p><h2 id="“超级语言的诞生”"><a href="#“超级语言的诞生”" class="headerlink" title="“超级语言的诞生”"></a>“超级语言的诞生”</h2><p>机器语言、汇编语言——不适合编程<br>高级语言，与CPU无关——适合编程<br>超级语言，庞大的计算生态。python——唯一的超级语言</p><h1 id="实例二：Python蟒蛇绘制"><a href="#实例二：Python蟒蛇绘制" class="headerlink" title="实例二：Python蟒蛇绘制"></a>实例二：Python蟒蛇绘制</h1><hr><p>下面先给出代码，再进行代码分析</p><h2 id="蟒蛇绘制代码"><a href="#蟒蛇绘制代码" class="headerlink" title="蟒蛇绘制代码"></a>蟒蛇绘制代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#PythonDraw.py</span><br><span class="line">import turtle</span><br><span class="line">turtle.setup(650,350,200,200)</span><br><span class="line">turtle.penup()</span><br><span class="line">turtle.fd(-250)</span><br><span class="line">turtle.pendown()</span><br><span class="line">turtle.pensize(25)</span><br><span class="line">turtle.pencolor(&quot;gold&quot;)</span><br><span class="line">turtle.seth(-40)</span><br><span class="line">for i in range(4):</span><br><span class="line">    turtle.circle(40,80)</span><br><span class="line">    turtle.circle(-40,80)</span><br><span class="line">turtle.circle(40,80/2)</span><br><span class="line">turtle.fd(40)</span><br><span class="line">turtle.circle(16,180)</span><br><span class="line">turtle.fd(40 * 2/3)</span><br><span class="line">turtle.done()    #关闭turtle，一般在使用完turtle后添加，否则会无响应</span><br></pre></td></tr></table></figure><h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="库引用与import"><a href="#库引用与import" class="headerlink" title="库引用与import"></a>库引用与import</h3><pre><code>库引用：扩充Python程序功能的方式</code></pre><p>1.使用import保留字完成，采用如下编码风格<br>import&lt;库名&gt;<br>&lt;库名&gt;.&lt;函数名&gt;(&lt;函数参数&gt;)</p><p>2.使用from和import来简化代码<br>例：<code>import turtle</code><br><code>from turtle import*/from &lt;库名&gt; import &lt;函数名&gt;   (&lt;函数参数&gt;)</code></p><p>比较：<br>第一种方法不会出现函数重名的现象<br>第二种方法会出现</p><p>3.使用import和as保留字共同完成<br><code>import&lt;库名&gt;as&lt;库别名&gt;</code><br>&lt;库别名&gt;.&lt;函数名称&gt;(&lt;函数参数&gt;)<br>–给调用的外部库关联一个更短、更适合自己的名字<br><strong>建议第三种方法</strong></p><h3 id="turtle绘图窗体"><a href="#turtle绘图窗体" class="headerlink" title="turtle绘图窗体"></a>turtle绘图窗体</h3><p><code>turtle.setup(width,height,startx,starty)</code><br>-setup()设置窗体的大小及位置<br>-4个参数中后两个可选,去掉后默认在屏幕的正中心</p><h3 id="turtle画笔控制函数"><a href="#turtle画笔控制函数" class="headerlink" title="turtle画笔控制函数"></a>turtle画笔控制函数</h3><p><code>turtle.penup()  #别名 turtle.pu  ————抬起画笔</code><br><code>turtle.pendown()  #别名 turtle.pd  ————落下画笔</code><br><code>turtle.pensize(width)  #别名 turtle.width(width) ————画笔宽度</code><br><code>turtle.pencolor(color)  #————color为颜色字符串或者rgb值</code><br><code>turtle.colormode()  #————设置画笔RGB颜色的表示模式</code></p><p>画笔颜色有三种形式：<br>1.颜色字符串<br>2.rgb的小数值<br>3.rgb的元组值<br>附:rgb色彩体系<br>    rgb由三种基本颜色构成万物色<br>红黄蓝 0-255 整数或 0-1小数</p><p><code>turtle.colormode(mode)</code><br>-1.0小数值<br>-255整数值</p><h3 id="运动控制函数"><a href="#运动控制函数" class="headerlink" title="运动控制函数"></a>运动控制函数</h3><p>1.空间坐标体系，坐标原点在画布的正中心<br><code>turtle.goto(x,y) #————去到那个坐标</code><br>2.<code>turtle.forword(d) #别名 turtle.fd(d) ————向前前进</code><br><code>turtle.bk(d) #————后退</code><br>-d:进距离，可以为负数<br>弧形:<br><code>turtle.circle(r,extent)</code><br>-r:半径<br>-extent:绘制的弧度<br>半径是负数:圆心在右侧</p><h3 id="turtle方向控制函数（角度坐标体系）"><a href="#turtle方向控制函数（角度坐标体系）" class="headerlink" title="turtle方向控制函数（角度坐标体系）"></a>turtle方向控制函数（角度坐标体系）</h3><pre><code>控制海龟面对方向：绝对角度&amp;海龟角度</code></pre><p><code>turtle.setheading(angle） #别名 turtle.seth(angle) ————改变行进方向，海龟走角度</code><br><code>turtle.left(angle) #————海龟向左转</code><br><code>turtle.right(angle) #————海龟向右转</code><br>-angle:角度<br>只改变方向，不移动</p>]]></content>
     
