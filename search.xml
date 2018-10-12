@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python函数和代码复用（一）]]></title>
+    <url>%2F2018%2F10%2F12%2FPython-5-1%2F</url>
+    <content type="text"><![CDATA[第一节，函数的定义和使用 函数的定义和使用 函数的理解和定义函数是一段代码的表示 ——是一段具有特定功能的、可重用的语句组——是一种功能的抽象，一般函数表达特定功能——两个作用：降低变成难度 和 代码复用 def&lt;函数名&gt;(&lt;参数（0个或多个）&gt;): &lt;函数体&gt; return&lt;返回值&gt; -函数定义时，所制定的参数是一种占位符-函数定义后，如果不经过调用，不会被执行-函数定义时，参数时输入、函数体是处理、结果是输出（IPO） 函数的使用及调用过程调用时运行函数代码的方法：调用时 实际参数 替换形式参数 得到 返回值 函数的参数传递：参数个数：可有可无 必须有括号 可选参数传递：函数定义时可以为某些参数指定默认值，构成可选参数 def&lt;函数名&gt;(&lt;非可选参数&gt;,&lt;可选参数&gt;): &lt;函数体&gt; return&lt;返回值&gt; 例子： 123456def fact(n,m=1): s = 1 for i in range(1,n+1): s *= i return s//m#若不给m赋值，m默认为1 可变参数传递： 函数定义时可以设计可变数量参数，即不确定参数总数量 def&lt;函数名&gt;(&lt;参数&gt;,*b): &lt;函数体&gt; return&lt;返回值&gt; 实例： 12345678#计算n!乘数def fact(n,*b): #b 为可变参数 s = 1 for i in range(1,n+1): s *= i for item in b: #这里的b是组合数据类型 s *= item return s 调用：fact(10,3) fact(10,3,5,8) 参数传递的两种方式：位置或名称传递名称：直接规定形参的值 函数的返回值函数可以返回0个或多个结果-return保留字用来传递返回值-函数可以有返回值，也可以没有，可以有return，也可以没有-return可以传递0个返回值，也可以传递任意多个返回值 （,,,）元组类型 实例： 12345def fact(n, n=1): s = 1 for i in range(1,n+1): s*=i return s//m,n,m]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python程序控制结构（五）]]></title>
     <url>%2F2018%2F10%2F12%2FPython-4-5%2F</url>
     <content type="text"><![CDATA[第五节，实例6：圆周率的计算 实例6：圆周率的计算问题分析：1、公式计算2、蒙特卡罗方法：撒点 代码实现123456789101112131415#CalPiV2.pyfrom random import randomfrom time import perf_counterDARTS = 1000*1000*10hits = 0.0start = perf_counter()for i in range(1,DARTS+1): x,y = random(),random() dist = pow(x**2+y**2,0.5) if dist&lt;=1.0: hits = hits + 1pi = 4*(hits/DARTS)print(&quot;圆周率值是：&#123;&#125;&quot;.format(pi))print(&quot;运行时间是：&#123;:.5f&#125;s&quot;.format(perf_counter()-start))#一段代码用 \ 可以进行换行 举一反三理解方法思维：-数学思维-计算思维谁更准确？ 程序运行时间分析：-使用time库计算获得程序运行时间-改变撒点数量，理解程序运行时间的分布-初步掌握简单的程序性能分析方法]]></content>

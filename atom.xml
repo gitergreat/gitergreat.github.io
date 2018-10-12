@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-12T01:33:17.621Z</updated>
+  <updated>2018-10-12T01:48:58.519Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python函数和代码复用（一）</title>
+    <link href="http://yoursite.com/2018/10/12/Python-5-1/"/>
+    <id>http://yoursite.com/2018/10/12/Python-5-1/</id>
+    <published>2018-10-12T01:36:52.000Z</published>
+    <updated>2018-10-12T01:48:58.519Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第一节，函数的定义和使用</em></p></blockquote><a id="more"></a><h1 id="函数的定义和使用"><a href="#函数的定义和使用" class="headerlink" title="函数的定义和使用"></a>函数的定义和使用</h1><hr><h2 id="函数的理解和定义"><a href="#函数的理解和定义" class="headerlink" title="函数的理解和定义"></a>函数的理解和定义</h2><pre><code>函数是一段代码的表示</code></pre><p>——是一段具有特定功能的、可重用的语句组<br>——是一种功能的抽象，一般函数表达特定功能<br>——两个作用：降低变成难度 和 代码复用</p><pre><code>def&lt;函数名&gt;(&lt;参数（0个或多个）&gt;):    &lt;函数体&gt;    return&lt;返回值&gt;</code></pre><p>-函数定义时，所制定的参数是一种占位符<br>-函数定义后，如果不经过调用，不会被执行<br>-函数定义时，参数时输入、函数体是处理、结果是输出（IPO）</p><h2 id="函数的使用及调用过程"><a href="#函数的使用及调用过程" class="headerlink" title="函数的使用及调用过程"></a>函数的使用及调用过程</h2><p>调用时运行函数代码的方法：<br>调用时 实际参数 替换形式参数  得到  返回值</p><h2 id="函数的参数传递："><a href="#函数的参数传递：" class="headerlink" title="函数的参数传递："></a>函数的参数传递：</h2><p>参数个数：可有可无 必须有括号</p><p>可选参数传递：函数定义时可以为某些参数指定默认值，构成可选参数</p><pre><code>def&lt;函数名&gt;(&lt;非可选参数&gt;,&lt;可选参数&gt;):    &lt;函数体&gt;    return&lt;返回值&gt;</code></pre><p>例子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def fact(n,m=1):</span><br><span class="line">    s = 1</span><br><span class="line">    for i in range(1,n+1):</span><br><span class="line">        s *= i</span><br><span class="line">    return s//m</span><br><span class="line">#若不给m赋值，m默认为1</span><br></pre></td></tr></table></figure><p>可变参数传递：</p><p>函数定义时可以设计可变数量参数，即不确定参数总数量</p><pre><code>def&lt;函数名&gt;(&lt;参数&gt;,*b):    &lt;函数体&gt;    return&lt;返回值&gt;</code></pre><p>实例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#计算n!乘数</span><br><span class="line">def fact(n,*b):    #b 为可变参数</span><br><span class="line">    s = 1</span><br><span class="line">    for i in range(1,n+1):</span><br><span class="line">        s *= i</span><br><span class="line">    for item in b:  #这里的b是组合数据类型</span><br><span class="line">        s *= item</span><br><span class="line">    return s</span><br></pre></td></tr></table></figure><pre><code>调用：fact(10,3)fact(10,3,5,8)</code></pre><p>参数传递的两种方式：位置或名称传递<br>名称：直接规定形参的值</p><h2 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h2><p>函数可以返回0个或多个结果<br>-return保留字用来传递返回值<br>-函数可以有返回值，也可以没有，可以有return，也可以没有<br>-return可以传递0个返回值，也可以传递任意多个返回值</p><p>（,,,）元组类型</p><p>实例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def fact(n, n=1):</span><br><span class="line">    s = 1</span><br><span class="line">    for i in range(1,n+1):</span><br><span class="line">        s*=i</span><br><span class="line">    return s//m,n,m</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第一节，函数的定义和使用&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python程序控制结构（五）</title>
