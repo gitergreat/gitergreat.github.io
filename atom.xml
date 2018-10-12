@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-10T06:38:05.916Z</updated>
+  <updated>2018-10-12T01:33:17.621Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python程序控制结构（五）</title>
+    <link href="http://yoursite.com/2018/10/12/Python-4-5/"/>
+    <id>http://yoursite.com/2018/10/12/Python-4-5/</id>
+    <published>2018-10-12T01:26:03.000Z</published>
+    <updated>2018-10-12T01:33:17.621Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第五节，实例6：圆周率的计算</em></p></blockquote><a id="more"></a><h1 id="实例6：圆周率的计算"><a href="#实例6：圆周率的计算" class="headerlink" title="实例6：圆周率的计算"></a>实例6：圆周率的计算</h1><h2 id="问题分析："><a href="#问题分析：" class="headerlink" title="问题分析："></a>问题分析：</h2><p>1、公式计算<br>2、蒙特卡罗方法：撒点</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#CalPiV2.py</span><br><span class="line">from random import random</span><br><span class="line">from time import perf_counter</span><br><span class="line">DARTS = 1000*1000*10</span><br><span class="line">hits = 0.0</span><br><span class="line">start = perf_counter()</span><br><span class="line">for i in range(1,DARTS+1):</span><br><span class="line">    x,y = random(),random()</span><br><span class="line">    dist = pow(x**2+y**2,0.5)</span><br><span class="line">    if dist&lt;=1.0:</span><br><span class="line">        hits = hits + 1</span><br><span class="line">pi = 4*(hits/DARTS)</span><br><span class="line">print(&quot;圆周率值是：&#123;&#125;&quot;.format(pi))</span><br><span class="line">print(&quot;运行时间是：&#123;:.5f&#125;s&quot;.format(perf_counter()-start))</span><br><span class="line">#一段代码用   \   可以进行换行</span><br></pre></td></tr></table></figure><h2 id="举一反三"><a href="#举一反三" class="headerlink" title="举一反三"></a>举一反三</h2><p>理解方法思维：<br>-数学思维<br>-计算思维<br>谁更准确？</p><p>程序运行时间分析：<br>-使用time库计算获得程序运行时间<br>-改变撒点数量，理解程序运行时间的分布<br>-初步掌握简单的程序性能分析方法</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第五节，实例6：圆周率的计算&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python程序控制结构（四）</title>
+    <link href="http://yoursite.com/2018/10/12/Python-4-4/"/>
+    <id>http://yoursite.com/2018/10/12/Python-4-4/</id>
+    <published>2018-10-12T01:06:30.000Z</published>
+    <updated>2018-10-12T01:25:19.624Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第四节，random库的使用</em></p></blockquote><a id="more"></a><h1 id="random库的使用"><a href="#random库的使用" class="headerlink" title="random库的使用"></a>random库的使用</h1><hr><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>-random库：random库是使用随机数的Python标准库<br>-伪随机数：采用梅森旋转算法生成的（伪）随机序列中的元素<br>-random库用于生成随机数<br>-使用random库：import random</p><p>两类函数：常用8个：</p><pre><code>-基本随机数函数：seed()，random()-扩展随机数函数：randint()，getrandbits()，uniform()，ranrange()，choice()，shuffle()</code></pre><h3 id="基本随机数函数"><a href="#基本随机数函数" class="headerlink" title="基本随机数函数"></a>基本随机数函数</h3><p>随机数种子———梅森旋转算法———随机序列（随机数）</p><table><thead><tr><th style="text-align:center">函数</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:center">seed(a=None)</td><td style="text-align:left">初始化给定的随机数种子，默认为当前系统时间</td></tr><tr><td style="text-align:center">random()</td><td style="text-align:left">生成一个(0.0,1.0)之间的随机小数</td></tr></tbody></table><pre><code>import randomrandom.seed(10)random.random()......random.random()......</code></pre><p>-种子可以只给一次也可以不给<br>-种子可以让随机数在现</p><h3 id="扩展随机数函数"><a href="#扩展随机数函数" class="headerlink" title="扩展随机数函数"></a>扩展随机数函数</h3><table><thead><tr><th style="text-align:center">函数</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:center">randint(a,b)</td><td style="text-align:left">生成一个(a,b)之间的整数</td></tr><tr><td style="text-align:center">randrange(m,n[,k])</td><td style="text-align:left">生成一个(m,n)之间以k为步长的随机整数</td></tr><tr><td style="text-align:center">getrandbits(k)</td><td style="text-align:left">生成一个k比特长的随机整数</td></tr><tr><td style="text-align:center">uniform(a,b)</td><td style="text-align:left">生成一个(a,b)之间的随机小数</td></tr><tr><td style="text-align:center">choice(seq)</td><td style="text-align:left">从序列seq中随机选择一个元素</td></tr><tr><td style="text-align:center">shuffle(seq)</td><td style="text-align:left">将序列seq中元素随机排列，返回打乱后的序列</td></tr></tbody></table><p>-能过利用随机种子产生“确定”伪随机数<br>-能够产生随机整数<br>-能够对序列类型进行随机操作</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第四节，random库的使用&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python程序控制结构（三）</title>
+    <link href="http://yoursite.com/2018/10/12/Python-4-3/"/>
+    <id>http://yoursite.com/2018/10/12/Python-4-3/</id>
+    <published>2018-10-12T00:49:49.000Z</published>
+    <updated>2018-10-12T01:04:47.175Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><em>第三节，程序的循环结构</em></p></blockquote><a id="more"></a><h1 id="程序的循环结构"><a href="#程序的循环结构" class="headerlink" title="程序的循环结构"></a>程序的循环结构</h1><hr><h2 id="遍历循环"><a href="#遍历循环" class="headerlink" title="遍历循环"></a>遍历循环</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p>-遍历某个结构形成的循环方式</p><pre><code>for  &lt;循环变量&gt; in &lt;遍历结构&gt; :    &lt;语句块&gt;</code></pre><p>-从遍历结构中逐一提取元素放入循环变量</p><h3 id="遍历循环的应用"><a href="#遍历循环的应用" class="headerlink" title="遍历循环的应用"></a>遍历循环的应用</h3><p>1、记数循环（N次）</p><pre><code>for i in range(N):&lt;语句块&gt;-遍历由range()函数产生的数字序列，产生循环</code></pre><p>2、for i in range(M,N,K)   特定次</p><pre><code>&lt;语句块&gt;-遍历由range（）函数产生的数字序列，产生循环从M开始到N之前的整数，以K为步长</code></pre><p>3、字符串遍历循环</p><pre><code>for c in s:&lt;语句块&gt;-s是字符串，遍历字符串每个字符，产生循环-c表示字符串的每一个字符对每一个字符运行一次语句块</code></pre><p>4、列表遍历循环</p><pre><code>for item in ls:&lt;语句块&gt;-ls是一个列表，遍历其每个元素，产生循环for item  in [123,&quot;PY&quot;,456]:print(item,end=&quot;,&quot;)结果：123,PY,456</code></pre><p>5、文件遍历循环</p><pre><code>for line in fi:&lt;语句块&gt;-fi是一个文件标识符，遍历其每行，产生循环遍历文件的每一行</code></pre><p><strong>观点：数据类型是由多个元素构成的，都可以用for in遍历</strong></p><h2 id="无限循环：由条件控制的循环运行方式"><a href="#无限循环：由条件控制的循环运行方式" class="headerlink" title="无限循环：由条件控制的循环运行方式"></a>无限循环：由条件控制的循环运行方式</h2><pre><code>while &lt;条件&gt;：&lt;语句块&gt;ctrl c退出</code></pre><h2 id="循环控制的保留字"><a href="#循环控制的保留字" class="headerlink" title="循环控制的保留字"></a>循环控制的保留字</h2><p>break和continue<br>-break只能跳出一层循环</p><h2 id="循环的高级用法"><a href="#循环的高级用法" class="headerlink" title="循环的高级用法"></a>循环的高级用法</h2><pre><code>for &lt;循环变量&gt;in&lt;遍历结构&gt;:&lt;语句块1&gt;else:&lt;语句块2&gt;while&lt;条件&gt;:&lt;语句块1&gt;else:&lt;语句块2&gt;</code></pre><p>循环与else：<br>-当循环没有被break语句退出时，执行else语句块<br>-else语句块作为“正常”完成循环的奖励<br>-这里else的用法与异常处理中的else用法类似</p><p><strong>能用于了解一段循环中是否被break退出</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;第三节，程序的循环结构&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python笔记整理" scheme="http://yoursite.com/categories/Python%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/"/>
+    
+    
+      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python程序控制结构（二）</title>

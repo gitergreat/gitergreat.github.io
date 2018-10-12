@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python程序控制结构（五）]]></title>
+    <url>%2F2018%2F10%2F12%2FPython-4-5%2F</url>
+    <content type="text"><![CDATA[第五节，实例6：圆周率的计算 实例6：圆周率的计算问题分析：1、公式计算2、蒙特卡罗方法：撒点 代码实现123456789101112131415#CalPiV2.pyfrom random import randomfrom time import perf_counterDARTS = 1000*1000*10hits = 0.0start = perf_counter()for i in range(1,DARTS+1): x,y = random(),random() dist = pow(x**2+y**2,0.5) if dist&lt;=1.0: hits = hits + 1pi = 4*(hits/DARTS)print(&quot;圆周率值是：&#123;&#125;&quot;.format(pi))print(&quot;运行时间是：&#123;:.5f&#125;s&quot;.format(perf_counter()-start))#一段代码用 \ 可以进行换行 举一反三理解方法思维：-数学思维-计算思维谁更准确？ 程序运行时间分析：-使用time库计算获得程序运行时间-改变撒点数量，理解程序运行时间的分布-初步掌握简单的程序性能分析方法]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python程序控制结构（四）]]></title>
+    <url>%2F2018%2F10%2F12%2FPython-4-4%2F</url>
+    <content type="text"><![CDATA[第四节，random库的使用 random库的使用 基本介绍-random库：random库是使用随机数的Python标准库-伪随机数：采用梅森旋转算法生成的（伪）随机序列中的元素-random库用于生成随机数-使用random库：import random 两类函数：常用8个： -基本随机数函数：seed()，random() -扩展随机数函数：randint()，getrandbits()，uniform()，ranrange()， choice()，shuffle() 基本随机数函数随机数种子———梅森旋转算法———随机序列（随机数） 函数 描述 seed(a=None) 初始化给定的随机数种子，默认为当前系统时间 random() 生成一个(0.0,1.0)之间的随机小数 import random random.seed(10) random.random() ...... random.random() ...... -种子可以只给一次也可以不给-种子可以让随机数在现 扩展随机数函数 函数 描述 randint(a,b) 生成一个(a,b)之间的整数 randrange(m,n[,k]) 生成一个(m,n)之间以k为步长的随机整数 getrandbits(k) 生成一个k比特长的随机整数 uniform(a,b) 生成一个(a,b)之间的随机小数 choice(seq) 从序列seq中随机选择一个元素 shuffle(seq) 将序列seq中元素随机排列，返回打乱后的序列 -能过利用随机种子产生“确定”伪随机数-能够产生随机整数-能够对序列类型进行随机操作]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python程序控制结构（三）]]></title>
+    <url>%2F2018%2F10%2F12%2FPython-4-3%2F</url>
+    <content type="text"><![CDATA[第三节，程序的循环结构 程序的循环结构 遍历循环基本结构-遍历某个结构形成的循环方式 for &lt;循环变量&gt; in &lt;遍历结构&gt; : &lt;语句块&gt; -从遍历结构中逐一提取元素放入循环变量 遍历循环的应用1、记数循环（N次） for i in range(N): &lt;语句块&gt; -遍历由range()函数产生的数字序列，产生循环 2、for i in range(M,N,K) 特定次 &lt;语句块&gt; -遍历由range（）函数产生的数字序列，产生循环 从M开始到N之前的整数，以K为步长 3、字符串遍历循环 for c in s: &lt;语句块&gt; -s是字符串，遍历字符串每个字符，产生循环 -c表示字符串的每一个字符 对每一个字符运行一次语句块 4、列表遍历循环 for item in ls: &lt;语句块&gt; -ls是一个列表，遍历其每个元素，产生循环 for item in [123,&quot;PY&quot;,456]: print(item,end=&quot;,&quot;) 结果：123,PY,456 5、文件遍历循环 for line in fi: &lt;语句块&gt; -fi是一个文件标识符，遍历其每行，产生循环 遍历文件的每一行 观点：数据类型是由多个元素构成的，都可以用for in遍历 无限循环：由条件控制的循环运行方式while &lt;条件&gt;： &lt;语句块&gt; ctrl c退出 循环控制的保留字break和continue-break只能跳出一层循环 循环的高级用法for &lt;循环变量&gt;in&lt;遍历结构&gt;: &lt;语句块1&gt; else: &lt;语句块2&gt; while&lt;条件&gt;: &lt;语句块1&gt; else: &lt;语句块2&gt; 循环与else：-当循环没有被break语句退出时，执行else语句块-else语句块作为“正常”完成循环的奖励-这里else的用法与异常处理中的else用法类似 能用于了解一段循环中是否被break退出]]></content>
+      <categories>
+        <category>Python笔记整理</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python程序控制结构（二）]]></title>
     <url>%2F2018%2F10%2F10%2FPython-4-2%2F</url>
     <content type="text"><![CDATA[第二节，实例5：身体质量指数BMI 身体质量指数BMI 背景分析BMI:体重（kg）/身高的平方（m）问题需求:-输入：给定身高和体重值-输出：BMI国内标准 国际标准 代码：123456789101112131415161718#CalBMIv3.pyheight,weight = eval(input(&quot;请输入身高（米）和体重（公斤）[逗号隔开]：&quot;))bmi = weight / pow(height,2)print(&quot;BMI数值为:&#123;:.2f&#125;&quot;.format(bmi))who,nat = &quot;&quot;,&quot;&quot;if bmi &lt; 18.5: who,nat = &quot;偏瘦&quot;,&quot;偏瘦&quot;elif 18.5&lt;=bmi&lt;24: who,nat = &quot;正常&quot;,&quot;正常&quot;elif 24&lt;=bmi&lt;25: who,nat = &quot;正常&quot;,&quot;偏胖&quot;elif 25&lt;=bmi&lt;28: who,nat = &quot;偏胖&quot;,&quot;偏胖&quot;elif 28&lt;=bmi&lt;30: who,nat = &quot;偏胖&quot;,&quot;肥胖&quot;else: who,nat = &quot;肥胖&quot;,&quot;肥胖&quot;print(&quot;BMI指标为：国际&apos;&#123;0&#125;&apos;，国内‘&#123;1&#125;&apos;&quot;.format(who,nat)) 举一反三：关注多条件的组合：-多分支条件之间的覆盖是重要问题-程序可运行，但不正确，要注意多分支-分支结构是程序的重要框架，读程序先看分支]]></content>
